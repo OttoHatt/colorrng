@@ -6,5 +6,4 @@ return GenericScreenGuiProvider.new({
 	CRATECONTROL = 0,
 	CRATEINVENTORY = 1,
 	CRATEUNBOX = 100,
-	FADE = 1000,
 })
