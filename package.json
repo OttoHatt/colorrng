@@ -1,0 +1,52 @@
+{
+	"name": "colorrng",
+	"version": "1.0.0",
+	"description": "",
+	"keywords": [
+		"Roblox",
+		"Nevermore",
+		"Lua"
+	],
+	"license": "UNLICENSED",
+	"dependencies": {
+		"@quenty/adorneeutils": "^3.1.0",
+		"@quenty/animations": "^8.1.0",
+		"@quenty/attributeutils": "^14.1.0",
+		"@quenty/baseobject": "^10.1.0",
+		"@quenty/basicpane": "^13.1.0",
+		"@quenty/blend": "^12.1.0",
+		"@quenty/brio": "^14.1.0",
+		"@quenty/buttonhighlightmodel": "^14.1.0",
+		"@quenty/camera": "^14.1.0",
+		"@quenty/characterutils": "^12.1.0",
+		"@quenty/clienttranslator": "^14.1.0",
+		"@quenty/collectionserviceutils": "^8.1.0",
+		"@quenty/color3utils": "^11.1.0",
+		"@quenty/contentproviderutils": "^12.1.0",
+		"@quenty/coreguienabler": "^12.1.0",
+		"@quenty/datastore": "^13.1.0",
+		"@quenty/draw": "^7.1.0",
+		"@quenty/gamescalingutils": "^13.1.0",
+		"@quenty/genericscreenguiprovider": "^13.1.0",
+		"@quenty/hide": "^11.1.0",
+		"@quenty/humanoidutils": "^2.1.0",
+		"@quenty/instanceutils": "^13.1.0",
+		"@quenty/loader": "^10.1.0",
+		"@quenty/maid": "^3.1.0",
+		"@quenty/observablecollection": "^12.1.0",
+		"@quenty/playerutils": "^8.1.0",
+		"@quenty/promise": "^10.1.0",
+		"@quenty/randomutils": "^6.1.0",
+		"@quenty/remoting": "^12.1.0",
+		"@quenty/rx": "^13.1.0",
+		"@quenty/servicebag": "^11.1.0",
+		"@quenty/signal": "^7.1.0",
+		"@quenty/sounds": "^10.1.0",
+		"@quenty/statestack": "^14.1.0",
+		"@quenty/textserviceutils": "^13.1.0",
+		"@quenty/userserviceutils": "^9.1.0"
+	},
+	"publishConfig": {
+		"access": "restricted"
+	}
+}
