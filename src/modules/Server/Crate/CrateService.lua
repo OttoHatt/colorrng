@@ -76,19 +76,15 @@ function CrateService:Start()
 
 	local remoteFunction = GetRemoteFunction(REMOTE_FUNCTION_NAME) :: RemoteFunction
 	remoteFunction.OnServerInvoke = function(player: Player, msg: string)
-		if typeof(msg) ~= "string" then
-			return
-		end
-
-		if
-			player:GetAttribute(ATTR_COOLDOWN)
-			and workspace:GetServerTimeNow() - player:GetAttribute(ATTR_COOLDOWN) < COOLDOWN_TIME
-		then
-			return
-		end
-		player:SetAttribute(ATTR_COOLDOWN, workspace:GetServerTimeNow())
-
 		if msg == "Unbox" then
+			if
+				player:GetAttribute(ATTR_COOLDOWN)
+				and workspace:GetServerTimeNow() - player:GetAttribute(ATTR_COOLDOWN) < COOLDOWN_TIME
+			then
+				return nil
+			end
+			player:SetAttribute(ATTR_COOLDOWN, workspace:GetServerTimeNow())
+
 			local idx = math.random(1, #CrateConstants)
 			self:_awardColor(player, idx)
 			return idx
