@@ -67,7 +67,7 @@ function CrateButton:_render()
 	)
 	local observeSpringSize = Blend.Spring(observeAnimSize, 25, 0.7):Pipe({
 		Rx.map(function(size: Vector3)
-			-- Springs accumulate floating point error, causing jitter because UDim2s integer pixel offsets as integers.
+			-- Springs accumulate floating point error, causing jitter because UDim2s store offset as integers.
 			-- For the width, we want a multiple of 2 because we're going to centre this element across the X-axis.
 			-- Multiples of 1 will cause the contents to shift a pixel over in some direction while animating.
 			local width = math.round(size.X / 2) * 2

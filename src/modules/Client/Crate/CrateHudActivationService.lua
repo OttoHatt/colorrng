@@ -1,8 +1,8 @@
 --[=[
     @class CrateHudActivationService
 
-    Hud appearence was tied to story.
-	This service was written post-development so the game works out-of-the-box.
+	Hud appearence was tied to the removed "narrative" of the game.
+	This service was written post-development so gameplay works out-of-the-box.
 	It serves as reference for anonymously negotiating a service's state.
 ]=]
 

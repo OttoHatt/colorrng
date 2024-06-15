@@ -10,7 +10,7 @@ local SOUND_PLINK = "rbxassetid://3199239518"
 local SOUND_FINAL = "rbxassetid://2752040675"
 
 local SOUND_TIERS = table.freeze({
-	[1] = "", -- Boo
+	[1] = "", -- Silence
 	[2] = "rbxassetid://3199299018", -- Applause
 	[3] = "rbxassetid://3199299018", -- Applause
 	[4] = "rbxassetid://8068122001", -- Eerie chorus chord

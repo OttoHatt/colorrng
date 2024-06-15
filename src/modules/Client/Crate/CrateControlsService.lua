@@ -1,7 +1,7 @@
 --[=[
 	@class CrateControlsService
 
-	Client-side crate controls. Manage visiblity, accessibility, etc.
+	Client-side crate unboxing controls.
 ]=]
 
 local require = require(script.Parent.loader).load(script)

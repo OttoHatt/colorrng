@@ -1,7 +1,7 @@
 --[=[
 	@class CrateInventoryService
 
-	Render UI hud for the client.
+	Render unboxed inventory view for the client.
 ]=]
 
 local require = require(script.Parent.loader).load(script)
