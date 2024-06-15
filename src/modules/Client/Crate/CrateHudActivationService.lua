@@ -44,13 +44,16 @@ local function observeCameraNearPoint(point: Vector3, range: number)
 end
 
 function CrateHudActivationService:Start()
-	self._maid:GiveTask(observeCameraNearPoint(Vector3.zero, 64):Subscribe(function(inRange: boolean)
-		local maid = Maid.new()
-		self._maid._push = maid
-		if inRange then
-			maid:GiveTask(self._crateControlsService:PushEnabled())
-			maid:GiveTask(self._crateInventoryService:PushEnabled())
-		end
+	-- Slight delay so users see the UI animating in.
+	self._maid:GiveTask(task.delay(0.5, function()
+		self._maid:GiveTask(observeCameraNearPoint(Vector3.zero, 64):Subscribe(function(inRange: boolean)
+			local maid = Maid.new()
+			self._maid._push = maid
+			if inRange then
+				maid:GiveTask(self._crateControlsService:PushEnabled())
+				maid:GiveTask(self._crateInventoryService:PushEnabled())
+			end
+		end))
 	end))
 end
 
