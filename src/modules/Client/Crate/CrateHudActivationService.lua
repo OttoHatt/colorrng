@@ -36,7 +36,7 @@ local function observeCameraNearPoint(point: Vector3, range: number)
 			if now ~= last then
 				sub:Fire(now)
 			end
-			now = last
+			last = now
 		end
 		update()
 		return RunService.RenderStepped:Connect(update)
