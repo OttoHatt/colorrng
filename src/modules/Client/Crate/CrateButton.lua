@@ -30,10 +30,10 @@ function CrateButton.new(obj)
 	self.Activated = self.Gui.Activated
 
 	local sound = SoundUtils.createSoundFromId(SOUND_CLICK)
-	sound.Parent = self.Gui
-	self._maid:GiveTask(self.Activated:Connect(function()
+	self.Activated:Connect(function()
 		sound:Play()
-	end))
+	end)
+	sound.Parent = self.Gui
 
 	return self
 end

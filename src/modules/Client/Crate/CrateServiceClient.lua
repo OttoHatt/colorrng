@@ -47,11 +47,11 @@ function CrateServiceClient:Start()
 		:Subscribe(function(brio)
 			local maid, obj: IntValue = brio:ToMaidAndValue()
 			maid:GiveTask(RxValueBaseUtils.observeValue(obj):Subscribe(function(count: number)
-				-- Note that we need a string key.
-				-- Using a number could overwrite something in 'ObservableMap:_observeKeyValueChanged', breaking our observables!
-				-- A bug, kinda.
 				self._model:Set(obj.Name, count)
 			end))
+			maid:GiveTask(function()
+				self._model:Remove(obj.Name)
+			end)
 		end))
 end
 

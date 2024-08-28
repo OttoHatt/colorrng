@@ -6,7 +6,7 @@
 
 local require = require(script.Parent.loader).load(script)
 
-local CELL_SIZE = 64
+local CELL_SIZE = 60
 local TEXT_PADDING = -12
 local ICON_SIZE = 32 + 16
 
@@ -89,7 +89,7 @@ function CrateInventoryButton:_render()
 				Thickness = 2,
 			}),
 			Blend.New("UICorner")({
-				CornerRadius = UDim.new(0, 6),
+				CornerRadius = UDim.new(0, 4),
 			}),
 			Blend.New("ImageLabel")({
 				AnchorPoint = Vector2.new(0.5, 0.5),

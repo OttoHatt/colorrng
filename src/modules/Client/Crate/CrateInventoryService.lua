@@ -30,7 +30,7 @@ function CrateInventoryService:Init(serviceBag)
 	self._crateServiceClient = serviceBag:GetService(CrateServiceClient)
 	self._colorRngScreenProvider = serviceBag:GetService(ColorRngScreenProvider)
 
-	self._enabled = self._maid:Add(StateStack.new(false, "boolean"))
+	self._enabled = self._maid:Add(StateStack.new(false))
 	self._inventoryOpen = self._maid:Add(ValueObject.new(false))
 end
 

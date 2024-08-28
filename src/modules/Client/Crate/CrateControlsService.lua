@@ -38,17 +38,12 @@ function CrateControlsService:Init(serviceBag)
 
 	self._enabled = self._maid:Add(StateStack.new(false, "boolean"))
 
-	self._animationRequested = self._maid:Add(Signal.new())
+	self._unboxed = self._maid:Add(Signal.new())
 	self.AnimationActive = self._maid:Add(StateStack.new(false))
-	self.AnimationFinished = self._maid:Add(Signal.new())
 end
 
 function CrateControlsService:PushEnabled()
 	return self._enabled:PushState(true)
-end
-
-function CrateServiceClient:ObserveAnimationActive()
-	return self.AnimationActive:Observe()
 end
 
 function CrateControlsService:Start()
@@ -83,7 +78,7 @@ function CrateControlsService:_makeButton(maid)
 		maid._prom = self._crateService:PromiseTryUnbox()
 		maid._prom:Then(function(index: number?)
 			if index then
-				self._animationRequested:Fire(index)
+				self._unboxed:Fire(index)
 			end
 		end)
 	end))
@@ -106,13 +101,10 @@ function CrateControlsService:_mountAnim(maid)
 	maid:GiveTask(GameScalingUtils.renderUIScale({ ScreenGui = screen, Parent = proxy }):Subscribe())
 	maid:GiveTask(proxy)
 
-	maid:GiveTask(self._animationRequested:Connect(function(idx: number)
+	maid:GiveTask(self._unboxed:Connect(function(idx: number)
 		maid._anim = CrateAnimUtils.animate(proxy, idx)
 		maid._hideGui = self._coreGuiEnabler:Disable(newproxy(), Enum.CoreGuiType.All)
 		maid._state = self.AnimationActive:PushState(true)
-		maid._anim:Then(function()
-			self.AnimationFinished:Fire()
-		end)
 		maid._anim:Finally(function()
 			maid._hideGui = nil
 			maid._state = false
@@ -136,7 +128,7 @@ function CrateControlsService:_mountLight(maid)
 	end))
 	maid:GiveTask(spring)
 
-	maid:GiveTask(self._animationRequested:Connect(function(idx: number)
+	maid:GiveTask(self._unboxed:Connect(function(idx: number)
 		maid._light = task.delay(CrateAnimUtils.ESTIMATED_TIME_REVEAL, function()
 			local hrp = CharacterUtils.getAlivePlayerRootPart(Players.LocalPlayer)
 			l.Parent = hrp
@@ -148,7 +140,7 @@ function CrateControlsService:_mountLight(maid)
 end
 
 function CrateControlsService:_mountShake(maid)
-	maid:GiveTask(self._animationRequested:Connect(function(idx: number)
+	maid:GiveTask(self._unboxed:Connect(function(idx: number)
 		-- The higher the tier, the more violent the shake.
 		maid._shake = task.delay(CrateAnimUtils.ESTIMATED_TIME_REVEAL, function()
 			local impulse = Vector3.one * 0.25 * math.pow(2, CrateConstants[idx].Tier)
