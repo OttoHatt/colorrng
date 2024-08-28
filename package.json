@@ -9,7 +9,6 @@
 	],
 	"license": "UNLICENSED",
 	"dependencies": {
-		"@quenty/adorneeutils": "^3.1.0",
 		"@quenty/animations": "^8.1.0",
 		"@quenty/attributeutils": "^14.1.0",
 		"@quenty/baseobject": "^10.1.0",
@@ -43,8 +42,7 @@
 		"@quenty/signal": "^7.1.0",
 		"@quenty/sounds": "^10.1.0",
 		"@quenty/statestack": "^14.1.0",
-		"@quenty/textserviceutils": "^13.1.0",
-		"@quenty/userserviceutils": "^9.1.0"
+		"@quenty/textserviceutils": "^13.1.0"
 	},
 	"publishConfig": {
 		"access": "restricted"
