@@ -50,13 +50,13 @@ function CrateAnimUtils.promisePreload()
 	})
 end
 
-local function observeChaseColor(targetValue)
+local function observeChaseColor(targetValue: Color3)
 	return Observable.new(function(sub)
 		local col = Color3.new(1, 1, 1)
 
 		sub:Fire(col)
 		return RunService.RenderStepped:Connect(function(_dt: number)
-			-- TODO: Use dt lol.
+			-- TODO: Use dt to make this lerp frame independent (https://x.com/FreyaHolmer/status/1757836988495847568).
 			col = LuvColor3Utils.lerp(col, targetValue.Value, 0.3)
 			sub:Fire(col)
 		end)

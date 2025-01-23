@@ -31,13 +31,11 @@ function CrateServiceClient:Init(serviceBag)
 
 	self._remoteFunctionPromise = self._maid:Add(PromiseGetRemoteFunction(REMOTE_FUNCTION_NAME))
 
-	-- See note in CrateInventoryView.lua
 	self._model = ObservableMap.new()
 	self._maid:GiveTask(self._model)
 end
 
 function CrateServiceClient:Start()
-	-- TODO: Brios here is expensive!
 	self._maid:GiveTask(RxInstanceUtils.observeLastNamedChildBrio(Players.LocalPlayer, "Folder", "ColorInventory")
 		:Pipe({
 			RxBrioUtils.switchMapBrio(function(container: Instance)
@@ -47,6 +45,10 @@ function CrateServiceClient:Start()
 		:Subscribe(function(brio)
 			local maid, obj: IntValue = brio:ToMaidAndValue()
 			maid:GiveTask(RxValueBaseUtils.observeValue(obj):Subscribe(function(count: number)
+				-- Note that we need a string key.
+				-- Writing integers can stomp maid tasks (in 'ObservableMap:_observeKeyValueChanged' et al).
+				-- Triggering this bug breaks downstream observables.
+				-- https://github.com/Quenty/NevermoreEngine/pull/479.
 				self._model:Set(obj.Name, count)
 			end))
 			maid:GiveTask(function()
